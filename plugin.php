@@ -19,15 +19,16 @@
  *
  */
 
-if ( ! class_exists( 'SE_WC_Product_Data_Store_CPT' ) ) {
-	require_once( dirname( __FILE__ ) . 'data-stores/class-se-wc-product-data-store-cpt.php' );
-}
+define( 'WAPSTO_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
 function change_product_data_store( &$stores ) {
-	$stores["product"] = "SE_WC_Product_Data_Store_CPT";
 
+	if ( ! class_exists( 'SE_WC_Product_Data_Store_CPT' ) ) {
+		require_once( WAPSTO_PLUGIN_PATH . 'data-stores/class-se-wc-product-data-store-cpt.php' );
+	}
+
+	$stores["product"] = "SE_WC_Product_Data_Store_CPT";
 	return $stores;
 }
 
 add_filter( "woocommerce_data_stores", "change_product_data_store" );
-
