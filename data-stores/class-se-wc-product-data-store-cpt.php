@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class SE_WC_Product_Data_Store_CPT extends WC_Product_Data_Store_CPT {
 
-	public function search_products( $term, $type = '', $include_variations = false, $all_statuses = false ) {
+	public function search_products( $term, $type = '', $include_variations = false, $all_statuses = false, $limit = NULL, $include = NULL, $exclude = NULL ) {
 		global $wpdb;
 
 		$like_term     = '%' . $wpdb->esc_like( $term ) . '%';
